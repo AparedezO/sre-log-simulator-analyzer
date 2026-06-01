@@ -20,7 +20,7 @@
 - [Metrics Endpoint](#metrics-endpoint)
 - [SRE Detection Rules](#sre-detection-rules)
 - [Recommended Practice Flow](#recommended-practice-flow)
-- [GitHub Readiness](#github-readiness)
+- [Operational Value](#operational-value)
 - [Future Improvements](#future-improvements)
 
 ## Overview
@@ -72,14 +72,14 @@ Raw logs -> Aggregated signals -> Incident hypothesis -> Severity -> Metrics
 
 ```text
 04_log_simulator_analyzer_sre_practice/
-├── log_generator.py
-├── log_analyzer.py
-├── metrics.py
-├── requirements.txt
-├── README.md
-├── .gitignore
-└── logs/
-    └── .gitkeep
+|-- log_generator.py
+|-- log_analyzer.py
+|-- metrics.py
+|-- requirements.txt
+|-- README.md
+|-- .gitignore
+`-- logs/
+    `-- .gitkeep
 ```
 
 ## Log Format
@@ -263,17 +263,17 @@ The analyzer uses simple rules to infer likely operational issues.
 4. Generate more logs and rerun the analyzer.
 5. Compare how error rate, latency, status codes, and root cause inference change.
 
-## GitHub Readiness
+## Operational Value
 
-The project is ready to publish as a portfolio exercise because it includes:
+This project demonstrates a practical observability workflow:
 
-- A clear project purpose.
-- Separate generator, analyzer, and metrics modules.
-- A clean `.gitignore`.
-- A `logs/` folder kept with `.gitkeep`.
-- Runtime log files ignored by Git.
-- A documented practice flow.
-- Example output for interviews and demos.
+- Raw service events are generated as logs.
+- Logs are parsed into measurable operational signals.
+- Error volume, status codes, endpoint usage, latency, and error rate are summarized.
+- Incident patterns are classified into likely causes.
+- Metrics are exposed in a format that monitoring tools can consume.
+
+This mirrors a common SRE workflow during incident investigation: collect signals, identify patterns, form a hypothesis, and expose measurable indicators for ongoing monitoring.
 
 ## Future Improvements
 
@@ -284,11 +284,3 @@ The project is ready to publish as a portfolio exercise because it includes:
 - Add Grafana dashboard examples.
 - Add severity metrics such as `incident_severity{level="critical"} 1`.
 - Add unit tests for parsing and inference rules.
-
-## Interview Explanation
-
-You can explain this project like this:
-
-```text
-This project simulates production logs, analyzes them for operational signals, infers possible root causes, and exposes metrics in Prometheus format. It practices the observability and incident triage side of SRE work.
-```
